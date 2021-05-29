@@ -1,4 +1,4 @@
-from pymongo import MongoClient, collection
+from pymongo import MongoClient
 import datetime
 import random
 import secrets
@@ -19,22 +19,6 @@ collection2=db[c2]
 collection1=db[c1]
 collection3=db[c3]
 collection6=db[c6]
-
-def offer(bill):
-  offer = ['FIRST10','MOVIE5']
-  of = input('Did you have any Offer Code(y/n) :')
-  if of == 'y':
-    o = input('OfferCode: ')
-    if o in offer:
-      bill = bill-(bill/10)
-      return bill
-    else:
-      print('Invalid Code')
-      return bill
-  else:
-    return bill
-  
-
 
 
 def booking(name):
@@ -112,7 +96,7 @@ def booking(name):
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, message)
 
-booking('nandha')
+
 
 
 
