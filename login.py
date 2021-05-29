@@ -1,3 +1,4 @@
+from booking import booking
 from pymongo import MongoClient
 
 client = MongoClient('mongodb+srv://dbuser1:1234@eshop.m8tu7.mongodb.net/test')
@@ -25,6 +26,8 @@ def register():
   place = input("Region : ")
   collection1.insert_one({"name":uname,"email":email,"password":password,"place":place})
   print('Your Id is registered sucessfully ! ')
+  from booking import booking
+  booking(uname)
 
 def user_login():
     print("Welcome to Movieflix\n")
@@ -38,6 +41,8 @@ def user_login():
           c+=1
     if(c==1):
       print("Welcome back",name,"!\n")
+      from booking import booking
+      booking(name)
   
     else:
         print("Invalid admin credentials")
