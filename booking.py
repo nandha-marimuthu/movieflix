@@ -92,7 +92,25 @@ def booking(name):
   bid = ''.join(secrets.choice(string.ascii_letters + string.digits) for x in range(num))  
   print("Booking Id is :",bid)  
   data['bid'] = bid
-  print(data)
+  collection5.insert(data)
+  s = ''
+  for i in data:
+    s+=str(i)+' : '+str(data[i])+'\n'
+  s = 'Booking Details\n'+s
+  print(s)
+  import smtplib, ssl
+
+  port = 465  # For SSL
+  smtp_server = "smtp.gmail.com"
+  sender_email = "nandhaa403@gmail.com"  # Enter your address
+  receiver_email = "nandhabalanmarimuthu15@gmail.com"  # Enter receiver address
+  password = 'nandhaaku'
+  message = s
+
+  context = ssl.create_default_context()
+  with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message)
 
 booking('nandha')
 
