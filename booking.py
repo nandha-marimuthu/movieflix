@@ -38,7 +38,7 @@ def booking(name):
     print('You have choosen',j['movie'],j['language'],'price -',j['Price'])
     movie = j['movie']
     bill = j['Price']
-    date = datetime.date.today()
+    date = input('Enter the date(dd-mm-yyy): ')
     qty = int(input("Enter the No of tickets: "))
     bill = bill*qty
     print(bill)
