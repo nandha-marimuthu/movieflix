@@ -96,11 +96,12 @@ def admin():
             exit()
         else:
             print("Invalid choice")
+
 def admin_login():
     print("Welcome to Theatre zone admin portal\n")
     admin_id=input("Adminname : ")
     pwd=input("Password : ")
-    r1 = collection1.find()
+    r1 = collection3.find()
     c = 0
     for i in r1:
       if i['name'] == admin_id:

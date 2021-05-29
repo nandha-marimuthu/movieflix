@@ -8,12 +8,12 @@ c5 = 'booked'
 collection5=db[c5]
 
 def cancel():
-  Bid = int(input("Booking Id: "))
+  Bid = input("Booking Id: ")
   name = input("Username: ")
   r1 = collection5.find()
   c = 0
   for i in r1:
-    if i['Bid'] == Bid:
+    if i['bid'] == Bid:
       if i['name'] == name:
         c+=1
   if(c==1):
@@ -40,3 +40,5 @@ def cancel():
       print('Invalid Otp')
   else:
     print('Invalid Usename or Booking Id')
+
+cancel()
