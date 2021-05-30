@@ -12,7 +12,6 @@ c3 = 'staff'
 c4 = 'theatre_id'
 c5 = 'booked'
 c6 = 'food'
-tcount=50
 collection4=db[c4]
 collection5=db[c5]
 collection2=db[c2]
@@ -22,6 +21,7 @@ collection6=db[c6]
 
 
 def booking(name):
+  ticketcount=50
   result1 = collection4.find()
   print("Theatre list")
   for i in result1:
@@ -29,10 +29,12 @@ def booking(name):
     tt=i['_id']
   screen=int(input("Enter theatre:"))
   result2 = collection2.find({'t_id':screen})
+  r=collection4.find({'_id':screen})
+  for k in r:
+    tn=k['name']
   for j in result2:
     print("\nMovie id - ",j['_id'],"\nMovie name - ",j['movie'],"\nLanguage - ",j['language'],"\nPrice  - ",j['Price'])
   movie=int(input("Enter movie id:"))
-
   r3=collection2.find({'_id':movie})
   for j in r3:
     print('You have choosen',j['movie'],j['language'],'price -',j['Price'])
@@ -40,9 +42,18 @@ def booking(name):
     bill = j['Price']
     date = input('Enter the date(dd-mm-yyy): ')
     qty = int(input("Enter the No of tickets: "))
+    sum=0
+    value=collection5.find({'date':date,'movie':movie,'theatre':tn})
+    for abc in value:
+      sum+=abc['qty']
+      s1=sum+ticketcount
+    if s1>qty:
+      print("House full\nPlease choose another date/film")
+      booking(name)
+      exit()
     bill = bill*qty
     print(bill)
-  data = {'name':name,'movie':movie,'qty':qty,'date':date}
+  data = {'name':name,'movie':movie,'qty':qty,'date':date,'theatre':tn}
 
   f = input('Do you want to enjoy the movie with snaks(y/n): ')
   if f == 'y':
@@ -82,19 +93,27 @@ def booking(name):
     s+=str(i)+' : '+str(data[i])+'\n'
   s = 'Booking Details\n'+s
   print(s)
-  import smtplib, ssl
+  
 
-  port = 465  # For SSL
-  smtp_server = "smtp.gmail.com"
-  sender_email = "nandhaa403@gmail.com"  # Enter your address
-  receiver_email = "nandhabalanmarimuthu15@gmail.com"  # Enter receiver address
-  password = 'nandhaaku'
-  message = s
+  import smtplib
+  #import random
+  #otp=random.randint(1000,10000)
+  sender = 'keerthanav3103@gmail.com'
+  rec = 'keerthudancer@gmail.com'
+  password = 'Alohomora@2000'
+  server = smtplib.SMTP('smtp.gmail.com', 587)
+  server.starttls()
+  server.login(sender, password)
+  server.sendmail(sender, rec, s)
+  # print("please type the otp to confirm your request")
+  # check=int(input("Enter :"))
+  # if check==otp:
+  #     print("Done")
+  # else:
+  #     print("invalid")'''
 
-  context = ssl.create_default_context()
-  with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, message)
+
+
 
 
 

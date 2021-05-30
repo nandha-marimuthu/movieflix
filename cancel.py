@@ -5,6 +5,7 @@ client = MongoClient('mongodb+srv://dbuser1:1234@eshop.m8tu7.mongodb.net/test')
 
 db = client['moviebook']
 c5 = 'booked'
+
 collection5=db[c5]
 
 def cancel():
@@ -23,9 +24,9 @@ def cancel():
 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "nandhaa403@gmail.com"  # Enter your address
-    receiver_email = "nandhabalanmarimuthu15@gmail.com"  # Enter receiver address
-    password = 'nandhaaku'
+    sender_email = "keerthanav3103@gmail.com"  # Enter your address
+    receiver_email = "keerthudancer@gmail.com"  # Enter receiver address
+    password = 'Alohomora@2000'
     message = '\nYour otp is '+str(otp)
 
     context = ssl.create_default_context()
@@ -36,9 +37,10 @@ def cancel():
     if o == otp:
       collection5.delete_one({"bid":Bid})
       print('Your Booking is cancelled\nBill will be refunded soon')
+
     else:
       print('Invalid Otp')
   else:
     print('Invalid Usename or Booking Id')
 
-cancel()
+#cancel()

@@ -84,8 +84,10 @@ def edit_food():
         collection6.delete_one({'_id':fid})
         
 def admin():
+    
     while True:
-        choice=int(input("Add/remove theatre: 1\nAdd/remove movies: 2\nAdd/remove combos: 3\nExit :4\nEnter: "))
+        
+        choice=int(input("Add/remove theatre: 1\nAdd/remove movies: 2\nAdd/remove combos: 3\nView collection: 4\nExit :5\nEnter: "))
         if choice==1:
             edit_theatre()
         elif choice==2:
@@ -93,12 +95,15 @@ def admin():
         elif choice==3:
             edit_food()
         elif choice==4:
+            from dashboard import dashboard_details
+            dashboard_details()
+        elif choice==5:
             exit()
         else:
             print("Invalid choice")
 
 def admin_login():
-    print("Welcome to Theatre zone admin portal\n")
+    print("Welcome to Movieflix admin portal\n")
     admin_id=input("Adminname : ")
     pwd=input("Password : ")
     r1 = collection3.find()
@@ -112,7 +117,9 @@ def admin_login():
       admin()
     else:
         print("Invalid admin credentials")
-admin_login()
+
+
+#admin_login()
 
     
 

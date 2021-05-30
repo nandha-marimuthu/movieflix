@@ -5,19 +5,29 @@ client = MongoClient('mongodb+srv://dbuser1:1234@eshop.m8tu7.mongodb.net/test')
 
 db = client['moviebook']
 collection1 = db['theatre_id']
+collection2=db['booked']
 
 data = [
   {"name":"nandha","password":"admin1"},
   {"name":"keerthana","password":"admin2"},{"name":"jagdeesh","password":"admin3"},{"name":"malavika","password":"admin4"}
 ]
 
+date=input("dd=mm=yyy:")
+a=collection2.find({'date':date})
+c=0;
+for i in a:
+    c+=i['qty']
+print(c)
 
-import random
-import string  
-import secrets 
+
+'''import random
+import string
+import secrets
 num = 4
-bid = ''.join(secrets.choice(string.ascii_letters + string.digits) for x in range(num))  
-print("Booking Id is :",bid)  
+bid = ''.join(secrets.choice(string.ascii_letters + string.digits) for x in range(num))
+print("Booking Id is :",bid)'''
+
+
 
 
 

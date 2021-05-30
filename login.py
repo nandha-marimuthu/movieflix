@@ -1,5 +1,6 @@
 from booking import booking
 from pymongo import MongoClient
+from admin import admin_login
 
 client = MongoClient('mongodb+srv://dbuser1:1234@eshop.m8tu7.mongodb.net/test')
 
@@ -41,13 +42,31 @@ def user_login():
           c+=1
     if(c==1):
       print("Welcome back",name,"!\n")
-      from booking import booking
-      booking(name)
-  
+      print("B for booking C for cancel")
+      bc=input("Enter:")
+      if bc=="B":     
+        from booking import booking
+        booking(name)
+      elif bc=="C":
+        from cancel import cancel
+        cancel()
+      else:
+        print("Invalid")
+        user_login()
     else:
-        print("Invalid admin credentials")
+        print("Invalid login credentials")
         reg = input("Do you want to register(y/n) : ")
         if reg == 'y':
           register()
 
-user_login()
+def starthere():
+  print("User: 1\nAdmin: 2\n")
+  v=int(input("Enter:"))
+  if v==1:
+    user_login()
+  elif v==2:
+    admin_login()
+  else:
+    print("Invalid choice")
+
+starthere()
