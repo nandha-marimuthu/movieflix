@@ -1,4 +1,3 @@
-from booking import booking
 from pymongo import MongoClient
 from admin import admin_login
 
@@ -65,6 +64,7 @@ def starthere():
   if v==1:
     user_login()
   elif v==2:
+    from admin import admin_login
     admin_login()
   else:
     print("Invalid choice")
