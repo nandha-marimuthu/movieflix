@@ -46,8 +46,8 @@ def booking(name):
     value=collection5.find({'date':date,'movie':movie,'theatre':tn})
     for abc in value:
       sum+=abc['qty']
-      s1=sum+ticketcount
-    if s1>qty:
+      s1=ticketcount - sum
+    if s1<qty:
       print("House full\nPlease choose another date/film")
       booking(name)
       exit()
