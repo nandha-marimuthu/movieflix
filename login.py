@@ -25,7 +25,7 @@ def register():
   password = input("Password : ")
   place = input("Region : ")
   collection1.insert_one({"name":uname,"email":email,"password":password,"place":place})
-  print('Your Id is registered sucessfully ! ')
+  print('Your Id is registered sucessfully\nUse FIRST10 to Avail Registration Offer! ')
   from booking import booking
   booking(uname)
 

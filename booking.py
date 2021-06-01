@@ -47,10 +47,11 @@ def booking(name):
     for abc in value:
       sum+=abc['qty']
       s1=ticketcount - sum
-    if s1<qty:
-      print("House full\nPlease choose another date/film")
-      booking(name)
-      exit()
+    if sum>0:
+      if s1<qty:
+        print("House full\nPlease choose another date/film")
+        booking(name)
+        exit()
     bill = bill*qty
     print(bill)
   data = {'name':name,'movie':movie,'qty':qty,'date':date,'theatre':tn}
@@ -99,7 +100,7 @@ def booking(name):
   #import random
   #otp=random.randint(1000,10000)
   sender = 'keerthanav3103@gmail.com'
-  rec = 'keerthudancer@gmail.com'
+  rec = 'nandhabalanmarimuthu15@gmail.com'
   password = 'Alohomora@2000'
   server = smtplib.SMTP('smtp.gmail.com', 587)
   server.starttls()
