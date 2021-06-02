@@ -25,7 +25,7 @@ def cancel():
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "keerthanav3103@gmail.com"  # Enter your address
-    receiver_email = "nandhabalanmarimuthu15@gmial.com"  # Enter receiver address
+    receiver_email = "nandhabalanmarimuthu15@gmail.com"  # Enter receiver address
     password = 'Alohomora@2000'
     message = '\nYour otp is '+str(otp)
 

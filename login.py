@@ -59,13 +59,16 @@ def user_login():
           register()
 
 def starthere():
-  print("User: 1\nAdmin: 2\n")
+  print("User: 1\nAdmin: 2\nCancel: 3")
   v=int(input("Enter:"))
   if v==1:
     user_login()
   elif v==2:
     from admin import admin_login
     admin_login()
+  elif v==3:
+    from cancel import cancel
+    cancel()
   else:
     print("Invalid choice")
 
